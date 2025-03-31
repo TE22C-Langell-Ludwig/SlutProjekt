@@ -4,10 +4,12 @@ public class Enemy
 {
     public int atk;
     public int hp;
-    public Enemy(int Hp, int Atk)
+    public string name;
+    public Enemy(int Hp, int Atk, string Name)
     {
         hp = Hp;
        atk = Atk;
+       name = Name;
     }
 
     public int Attack(int hp)
@@ -16,7 +18,7 @@ public class Enemy
         return hp;
     }
 
-    public void Gethit(int atk)
+    public virtual void Gethit(int atk)
     {
         hp -= atk;
     }

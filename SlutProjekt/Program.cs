@@ -1,60 +1,89 @@
-﻿using SlutProjekt;
+﻿using System.Reflection.Metadata.Ecma335;
+using SlutProjekt;
+List<string> Names = new List<string>();
 
+Names.Add("Jim");
+Names.Add("Jeremy");
+Names.Add("George");
+Names.Add("Jerry");
+Names.Add("Ben");
+Names.Add("Todd");
+Names.Add("Brian");
+
+
+Queue<Enemy> EnemyQueue = new Queue<Enemy>();
 for (int EnemyCount = 0; EnemyCount < 10; EnemyCount++)
 {
-int EnemyType = Random.Shared.Next(0,3);
-if (EnemyType==0)
-{
-Enemy basic = new Enemy (150, 5);
+    int EnemyType = Random.Shared.Next(0, 3);
+    string enemyname = Names[Random.Shared.Next(0, 7)];
+    if (EnemyType == 0)
+    {
+        int EliteEnemyHp = Random.Shared.Next(10, 20) * 10;
+        int EliteEnemyAtk = Random.Shared.Next(5, 10);
+        Enemy Enemy1 = new Enemy(150, 5, enemyname);
+        EnemyQueue.Enqueue(Enemy1);
+
+    }
+    if (EnemyType == 1)
+    {
+        int EliteEnemyHp = Random.Shared.Next(25, 35) * 10;
+        int EliteEnemyAtk = Random.Shared.Next(10, 25);
+        EliteEnemy Enemy1 = new EliteEnemy(EliteEnemyHp, EliteEnemyAtk, enemyname, false);
+        EnemyQueue.Enqueue(Enemy1);
+    }
+    if (EnemyType == 2)
+    {
+        int FlyingEnemyHp = Random.Shared.Next(10, 16) * 10;
+        int FlyingEnemyAtk = Random.Shared.Next(5, 15);
+        bool FlyingEnemyFlyingBool = false;
+        int FlyingEnemyFlyingInt = Random.Shared.Next(0, 2);
+        if (FlyingEnemyFlyingInt == 0)
+        {
+            FlyingEnemyFlyingBool = true;
+        }
+        if (FlyingEnemyFlyingInt == 1)
+        {
+            FlyingEnemyFlyingBool = false;
+        }
+        FlyingEnemy Enemy1 = new FlyingEnemy(FlyingEnemyHp, FlyingEnemyAtk, enemyname, FlyingEnemyFlyingBool);
+        EnemyQueue.Enqueue(Enemy1);
+    }
 }
-if (EnemyType==1)
+
+
+
+
+
+
+
+Player Main = new Player(30000, 15, false);
+
+
+while (Main.hp > 0)
 {
 
-}
-if (EnemyType==2)
-{
+    EnemyQueue.Peek().Gethit(Main.atk);
+    Main.hp = EnemyQueue.Peek().Attack(Main.hp);
+    if (EnemyQueue.Peek().hp > 0 && EnemyQueue.Peek()  is not  EliteEnemy)
+    {
 
-}
+        Console.WriteLine($"{EnemyQueue.Peek().name} has {EnemyQueue.Peek().hp} Hp left");
+        Console.WriteLine($"you have {Main.hp} Hp left");
+        Console.ReadLine();
+    }
+    else if (EnemyQueue.Peek().hp > 0 && EnemyQueue.Peek()  is  EliteEnemy )
+    {
 
-}
-
-
-
-
-
-
-
-Player Main = new Player(100,15,false);
-Enemy basic = new Enemy (150, 5);
-EliteEnemy jeremy = new EliteEnemy (300,10,false);
-FlyingEnemy jim = new FlyingEnemy(100,15,true);
-Queue<Enemy> EnemyQueue = new Queue<Enemy>();
-
-EnemyQueue.Enqueue(basic);
-EnemyQueue.Enqueue(jim);
-EnemyQueue.Enqueue(jeremy);
-
-
-
-while (Main.hp>0)
-{
-
-EnemyQueue.Peek().Gethit(Main.atk);
-Main.hp=EnemyQueue.Peek().Attack(Main.hp);
-if (EnemyQueue.Peek().hp>0)
-{
-
-Console.WriteLine($" The enemy has {EnemyQueue.Peek().hp} Hp left");
-Console.WriteLine($" you have {Main.hp} Hp left");
-Console.ReadLine();
-}
-if (EnemyQueue.Peek().hp<=0)
-{
-Console.WriteLine($"Enemy has been Defeated, Enemy Reinforcements are arriving");
-Console.WriteLine($"Press Enter to proceed");
-EnemyQueue.Dequeue();
-Console.ReadLine();
-}
+        Console.WriteLine($"you have {Main.hp} Hp left");
+        Console.ReadLine();
+    }
+    if (EnemyQueue.Peek().hp <= 0)
+    {
+        Console.WriteLine($"Enemy has been Defeated, Enemy Reinforcements are arriving");
+        Console.WriteLine($"Press Enter to proceed");
+        EnemyQueue.Dequeue();
+        Console.ReadLine();
+    }
 
 
 

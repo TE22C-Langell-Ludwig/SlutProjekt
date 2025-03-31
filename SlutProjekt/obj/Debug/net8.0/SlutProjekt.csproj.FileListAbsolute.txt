@@ -12,3 +12,4 @@ C:\Users\ludwig.langell\Documents\Skolsaker\Programmering\År 3 prog 2\SlutProje
 C:\Users\ludwig.langell\Documents\Skolsaker\Programmering\År 3 prog 2\SlutProjekt\SlutProjekt\obj\Debug\net8.0\SlutProjekt.pdb
 C:\Users\ludwig.langell\Documents\Skolsaker\Programmering\År 3 prog 2\SlutProjekt\SlutProjekt\obj\Debug\net8.0\SlutProjekt.genruntimeconfig.cache
 C:\Users\ludwig.langell\Documents\Skolsaker\Programmering\År 3 prog 2\SlutProjekt\SlutProjekt\obj\Debug\net8.0\ref\SlutProjekt.dll
+C:\Users\ludwig.langell\Documents\Skolsaker\Programmering\År 3 prog 2\SlutProjekt\SlutProjekt\obj\Debug\net8.0\SlutProjekt.sourcelink.json
