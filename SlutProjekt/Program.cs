@@ -57,21 +57,41 @@ for (int EnemyCount = 0; EnemyCount < 10; EnemyCount++)
 
 
 Player Main = new Player(30000, 15, false);
-
+bool ChoosingAttack = true;
 
 while (Main.hp > 0)
 {
+    while (ChoosingAttack == true)
+    {
+        Console.WriteLine("Choose What Area you want to attack A. The air B. The ground");
+        string answer = Console.ReadLine().ToUpper();
+        if (answer == "A")
+        {
+            Main.AttackingAir = true;
+            ChoosingAttack = false;
 
-    EnemyQueue.Peek().Gethit(Main.atk);
+        }
+        else if (answer == "B")
+        {
+            Main.AttackingAir = false;
+            ChoosingAttack = false;
+
+        }
+        else
+        {
+            Console.WriteLine("Non-Eligible Choice Pick Again.");
+        }
+    }
+    EnemyQueue.Peek().Gethit(Main.atk, Main.AttackingAir);
     Main.hp = EnemyQueue.Peek().Attack(Main.hp);
-    if (EnemyQueue.Peek().hp > 0 && EnemyQueue.Peek()  is not  EliteEnemy)
+    if (EnemyQueue.Peek().hp > 0 && EnemyQueue.Peek() is not EliteEnemy)
     {
 
         Console.WriteLine($"{EnemyQueue.Peek().name} has {EnemyQueue.Peek().hp} Hp left");
         Console.WriteLine($"you have {Main.hp} Hp left");
         Console.ReadLine();
     }
-    else if (EnemyQueue.Peek().hp > 0 && EnemyQueue.Peek()  is  EliteEnemy )
+    else if (EnemyQueue.Peek().hp > 0 && EnemyQueue.Peek() is EliteEnemy)
     {
 
         Console.WriteLine($"you have {Main.hp} Hp left");
@@ -84,10 +104,8 @@ while (Main.hp > 0)
         EnemyQueue.Dequeue();
         Console.ReadLine();
     }
-
-
-
-
+    ChoosingAttack = true;
+    Console.Clear();
 }
 
 
