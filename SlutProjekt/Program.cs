@@ -89,12 +89,14 @@ while (Main.hp > 0)
 
         Console.WriteLine($"{EnemyQueue.Peek().name} has {EnemyQueue.Peek().hp} Hp left");
         Console.WriteLine($"you have {Main.hp} Hp left");
+        Console.WriteLine("Press enter to proceed to next round");
         Console.ReadLine();
     }
     else if (EnemyQueue.Peek().hp > 0 && EnemyQueue.Peek() is EliteEnemy)
     {
 
         Console.WriteLine($"you have {Main.hp} Hp left");
+        Console.WriteLine("Press enter to proceed to next round");
         Console.ReadLine();
     }
     if (EnemyQueue.Peek().hp <= 0)

@@ -11,6 +11,7 @@ public class EliteEnemy : Enemy
   }
   public override void Gethit(int atk, bool AttackingAir)
   {
+    if (AttackingAir!=true){
     if (IsShielded == false)
     {
       hp -= atk;
@@ -26,6 +27,10 @@ public class EliteEnemy : Enemy
     {
       IsShielded = true;
       hitcount = 0;
+    }
+    }
+    else if (AttackingAir==true){
+    Console.WriteLine($"You swing Above {name}'s head and miss. (Hint. only flying enemies can be in the air)");
     }
 
 

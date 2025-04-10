@@ -20,7 +20,12 @@ public class Enemy
 
     public virtual void Gethit(int atk, bool AttackingAir)
     {
+        if (AttackingAir!=true){
         hp -= atk;
+        }
+        else if (AttackingAir==true){
+        Console.WriteLine($"You swing Above {name}'s head and miss. (Hint. only flying enemies can be in the air)");
+        }
     }
 
 }
