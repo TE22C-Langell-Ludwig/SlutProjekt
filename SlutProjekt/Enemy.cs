@@ -1,14 +1,10 @@
 namespace SlutProjekt;
 
-public class Enemy
+public class Enemy : Living
 {
-    public int atk;
-    public int hp;
     public string name;
-    public Enemy(int Hp, int Atk, string Name)
+    public Enemy(int Hp, int Atk, string Name) : base(Hp,Atk)
     {
-        hp = Hp;
-        atk = Atk;
         name = Name;
     }
 

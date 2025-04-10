@@ -2,12 +2,10 @@ using System;
 
 namespace SlutProjekt;
 
-public class Player
+public class Player : Living
 {
-  public int hp;
-  public int atk;
   public bool AttackingAir;
-  public Player(int Hp, int Atk, bool _AttackingAir)
+  public Player(int Hp, int Atk, bool _AttackingAir) : base(Hp,Atk)
   {
     hp = Hp;
     atk = Atk;
