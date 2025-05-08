@@ -39,4 +39,9 @@ public class EliteEnemy : Enemy
 
 
   }
+  public override string GetEnemyType()
+    {
+    string CurrentEnemyType="Elite Enemy";
+    return CurrentEnemyType;
+    }
 }

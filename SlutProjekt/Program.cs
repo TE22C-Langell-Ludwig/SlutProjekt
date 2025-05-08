@@ -12,6 +12,7 @@ Names.Add("Brian");
 
 
 Queue<Enemy> EnemyQueue = new Queue<Enemy>();
+
 for (int EnemyCount = 0; EnemyCount < 10; EnemyCount++)
 {
     int EnemyType = Random.Shared.Next(0, 3);
@@ -56,8 +57,11 @@ for (int EnemyCount = 0; EnemyCount < 10; EnemyCount++)
 
 
 
-Player Main = new Player(30000, 15, false);
+Player Main = new Player(150, 150, false);
 bool ChoosingAttack = true;
+Stack<String> DefeatedEnemyType = new();
+Stack<String> DefeatedEnemyName = new();
+
 
 while (Main.hp > 0)
 {
@@ -103,13 +107,29 @@ while (Main.hp > 0)
     {
         Console.WriteLine($"Enemy has been Defeated, Enemy Reinforcements are arriving");
         Console.WriteLine($"Press Enter to proceed");
+
+        DefeatedEnemyType.Push(EnemyQueue.Peek().GetEnemyType());
+        DefeatedEnemyName.Push(EnemyQueue.Peek().name);
         EnemyQueue.Dequeue();
         Console.ReadLine();
     }
     ChoosingAttack = true;
     Console.Clear();
-}
 
+}
+Console.WriteLine("You died.");
+Console.WriteLine("Heres all the enemies you defeated");
+
+while (DefeatedEnemyName.Count>0)
+{
+Console.WriteLine(DefeatedEnemyName.Pop());
+Console.WriteLine("they were a " + $"{DefeatedEnemyType.Pop()}");
+Console.WriteLine();
+}
+Console.ReadLine();
+Console.WriteLine("End of Game");
+Console.ReadLine();
+Console.ReadLine();
 
 
 

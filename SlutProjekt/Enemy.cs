@@ -23,5 +23,10 @@ public class Enemy : Living
         Console.WriteLine($"You swing Above {name}'s head and miss. (Hint. only flying enemies can be in the air)");
         }
     }
+    public virtual string GetEnemyType()
+    {
+    string CurrentEnemyType="enemy";
+    return CurrentEnemyType;
+    }
 
 }

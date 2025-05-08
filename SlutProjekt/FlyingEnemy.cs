@@ -23,6 +23,11 @@ public class FlyingEnemy : Enemy
     }
 
   }
+  public override string GetEnemyType()
+    {
+    string CurrentEnemyType="Flying Enemy";
+    return CurrentEnemyType;
+    }
 
 
 
