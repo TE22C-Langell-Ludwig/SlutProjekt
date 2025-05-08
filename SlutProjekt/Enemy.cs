@@ -25,7 +25,7 @@ public class Enemy : Living
     }
     public virtual string GetEnemyType()
     {
-    string CurrentEnemyType="enemy";
+    string CurrentEnemyType="Enemy";
     return CurrentEnemyType;
     }
 
